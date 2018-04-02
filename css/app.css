@@ -1,4 +1,4 @@
-.footer-inner {
+.github-test {
   background-color: rgb(255, 255, 255);
   position: absolute;
   left: 0;
@@ -8,7 +8,7 @@
   overflow: hidden;
 }
 
-.footer-inner img{
+.github-test img{
   padding: 5px;
   display: block;
   width: 50px;
