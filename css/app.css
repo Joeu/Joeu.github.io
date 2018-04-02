@@ -1,3 +1,16 @@
+.game-control {
+  padding-bottom: 20px;
+}
+
+.score-border {
+  display: inline-block; 
+  width: 49%;
+}
+
+#app {
+  text-align: center;
+}
+
 #logSession {
   max-height: 40%;
   overflow: auto;
