@@ -1,3 +1,22 @@
+footer {
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.footer-inner img{
+  padding: 5px;
+  display: block;
+  width: 50px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto
+}
+
 .game-control {
   padding-bottom: 20px;
 }
