@@ -11,59 +11,76 @@
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
+
   <div id="app" class="container">
-    <section class="score-header">
-      <h1>Jan Ken Pon</h1>
-      <div class="score-border">
-        <div class="panel panel-primary">
-          <div class="panel-heading">Player Score</div>
-          <div class="panel-body">{{ playerScore }}</div>
+
+    <header class="main-header">
+
+      <section class="score-header">
+        <h1>Jan Ken Pon</h1>
+        <div class="score-border">
+          <div class="panel panel-primary">
+            <div class="panel-heading">Player Score</div>
+            <div class="panel-body">{{ playerScore }}</div>
+          </div>
         </div>
-      </div>
-      <div class="score-border">
-        <div class="panel panel-danger">
-          <div class="panel-heading">CPU Score</div>
-          <div class="panel-body">{{ cpuScore }}</div>
+        <div class="score-border">
+          <div class="panel panel-danger">
+            <div class="panel-heading">CPU Score</div>
+            <div class="panel-body">{{ cpuScore }}</div>
+          </div>
         </div>
-      </div>
-      <span>*Draw rounds does not changes the counter</span>
-    </section>
-    <section class="game-play">
-      <div v-if="!gameRunning" class="game-control">
-        <label>Best of:</label>
-        <!-- Vue binding the style property -->
-        <select v-model="bestOf" :style="{width: 10 + '%', display: 'inline-block'}">
-          <option value="1">1</option>
-          <option value="3">3</option>
-          <option value="5">5</option>
-        </select>
-        <button class="btn btn-sm btn-success" @click="startGame">START</button>
-      </div>
-      <div v-else>
-        <div>
-          <input type="image" class="option-btn" src="./images/rock.png" @click="setSelected(options.rock)">
-          <input type="image" class="option-btn" src="./images/paper.png" @click="setSelected(options.paper)">
-          <input type="image" class="option-btn" src="./images/scissors.png" @click="setSelected(options.scissors)">
+      </section>
+
+    </header>
+
+    <div class="main-content">
+
+      <section class="game-play">
+        <div v-if="!gameRunning" class="game-control">
+          <label>Best of:</label>
+          <!-- Vue binding the style property -->
+          <select v-model="bestOf" :style="{width: 60 + 'px', display: 'inline-block'}">
+            <option value="1">1</option>
+            <option value="3">3</option>
+            <option value="5">5</option>
+          </select>
+          <button class="btn btn-sm btn-success" @click="startGame">START</button>
         </div>
-        <div class="game-control" v-if="gameRunning">
-          <button class="btn btn-lg btn-success" @click="jankenpon" :disabled="!optSelected">JANKENPON!</button>
-          <button class="btn btn-lg btn-warning" @click="restartGame">RESTART</button>
+        <div v-else>
+          <div>
+            <input type="image" class="option-btn" src="./images/rock.png" @click="setSelected(options.rock)">
+            <input type="image" class="option-btn" src="./images/paper.png" @click="setSelected(options.paper)">
+            <input type="image" class="option-btn" src="./images/scissors.png" @click="setSelected(options.scissors)">
+          </div>
+          <div class="game-control" v-if="gameRunning">
+            <button class="btn btn-lg btn-success" @click="jankenpon" :disabled="!optSelected">JANKENPON!</button>
+            <button class="btn btn-lg btn-warning" @click="restartGame">RESTART</button>
+          </div>
         </div>
+      </section>
+
+      <section class="log-session">
+        <ul>
+          <!-- Conditional class selection by Vue binding -->
+          <li v-for="entry in log" :class="entry.class">
+            {{ entry.text }}
+          </li>
+        </ul>
+      </section>
+
+    </div>
+
+    <footer>
+
+      <div class="footer-inner">
+        <a href="https://github.com/Joeu" target="_blank">
+          <img src="./images/github.svg" alt="Github repository">
+        </a>
       </div>
-    </section>
-    <section class="log-session">
-      <ul>
-        <!-- Conditional class selection by Vue binding -->
-        <li v-for="entry in log" :class="entry.class">
-          {{ entry.text }}
-        </li>
-      </ul>
-    </section>
-    <footer class="footer-inner">
-      <a href="https://github.com/Joeu" target="_blank">
-        <img src="./images/github.svg" alt="Github repository">
-      </a>
+      
     </footer>
+
   </div>
   <script src="app.js"></script>
 </body>
