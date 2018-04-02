@@ -12,23 +12,23 @@
 </head>
 <body>
   <div id="app" class="container">
-    <h1>Jan Ken Pon</h1>
-    <section>
-      <div class=".col-xs-6 score-border">
+    <section class="score-header">
+      <h1>Jan Ken Pon</h1>
+      <div class="score-border">
         <div class="panel panel-primary">
           <div class="panel-heading">Player Score</div>
           <div class="panel-body">{{ playerScore }}</div>
         </div>
       </div>
-      <div class=".col-xs-6 score-border">
+      <div class="score-border">
         <div class="panel panel-danger">
           <div class="panel-heading">CPU Score</div>
           <div class="panel-body">{{ cpuScore }}</div>
         </div>
       </div>
+      <span>*Draw rounds does not changes the counter</span>
     </section>
-    <section>
-      <h3>Choose your destiny!</h3>
+    <section class="game-play">
       <div v-if="!gameRunning" class="game-control">
         <label>Best of:</label>
         <!-- Vue binding the style property -->
@@ -40,10 +40,10 @@
         <button class="btn btn-sm btn-success" @click="startGame">START</button>
       </div>
       <div v-else>
-        <div class="panel panel-default">
-          <input type="image" src="./images/rock.png" @click="setSelected(options.rock)">
-          <input type="image" src="./images/paper.png" @click="setSelected(options.paper)">
-          <input type="image" src="./images/scissors.png" @click="setSelected(options.scissors)">
+        <div>
+          <input type="image" class="optionBtn" src="./images/rock.png" @click="setSelected(options.rock)">
+          <input type="image" class="optionBtn" src="./images/paper.png" @click="setSelected(options.paper)">
+          <input type="image" class="optionBtn" src="./images/scissors.png" @click="setSelected(options.scissors)">
         </div>
         <div class="game-control" v-if="gameRunning">
           <button class="btn btn-lg btn-success" @click="jankenpon" :disabled="!optSelected">JANKENPON!</button>
@@ -51,7 +51,7 @@
         </div>
       </div>
     </section>
-    <section id="logSession">
+    <section class="log-session">
       <ul>
         <!-- Conditional class selection by Vue binding -->
         <li v-for="entry in log" :class="entry.class">
@@ -59,12 +59,11 @@
         </li>
       </ul>
     </section>
-    <span>*Draw rounds does not changes the counter</span>
-    <div class="github-test">
+    <footer class="footer-inner">
       <a href="https://github.com/Joeu" target="_blank">
         <img src="./images/github.svg" alt="Github repository">
       </a>
-    </div>
+    </footer>
   </div>
   <script src="app.js"></script>
 </body>
