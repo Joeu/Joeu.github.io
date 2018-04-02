@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Jan Ken Pon - Game</title>
+
+  <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div id="app" class="container" style="text-align:center">
+    <h1>Jan Ken Pon</h1>
+    <section>
+      <div class=".col-xs-6" style="display: inline-block; width: 49%">
+        <div class="panel panel-primary">
+          <div class="panel-heading">Player Score</div>
+          <div class="panel-body">{{ playerScore }}</div>
+        </div>
+      </div>
+      <div class=".col-xs-6" style="display: inline-block; width: 49%">
+        <div class="panel panel-danger">
+          <div class="panel-heading">CPU Score</div>
+          <div class="panel-body">{{ cpuScore }}</div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h3>Choose your destiny!</h3>
+      <div v-if="!gameRunning" style="padding-bottom: 5px;">
+        <label>Best of:</label>
+        <select v-model="bestOf" :style="{width: 10 + '%', display: 'inline-block'}">
+          <option value="1">1</option>
+          <option value="3">3</option>
+          <option value="5">5</option>
+        </select>
+        <button class="btn btn-sm btn-success" @click="startGame">START</button>
+      </div>
+      <div v-else>
+        <div class="panel panel-default" style="text-align:center">
+          <input type="image" src="./images/rock.png" @click="setSelected(options.rock)">
+          <input type="image" src="./images/paper.png" @click="setSelected(options.paper)">
+          <input type="image" src="./images/scissors.png" @click="setSelected(options.scissors)">
+        </div>
+        <div style="padding-bottom: 20px;" v-if="gameRunning">
+          <button class="btn btn-lg btn-success" @click="jankenpon" :disabled="!optSelected">JOKENPO!</button>
+          <button class="btn btn-lg btn-warning" @click="restartGame">RESTART</button>
+        </div>
+      </div>
+    </section>
+    <section id="logSession">
+      <ul>
+        <li v-for="entry in log" :class="entry.class">
+          {{ entry.text }}
+        </li>
+      </ul>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
