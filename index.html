@@ -41,9 +41,9 @@
       </div>
       <div v-else>
         <div>
-          <input type="image" class="optionBtn" src="./images/rock.png" @click="setSelected(options.rock)">
-          <input type="image" class="optionBtn" src="./images/paper.png" @click="setSelected(options.paper)">
-          <input type="image" class="optionBtn" src="./images/scissors.png" @click="setSelected(options.scissors)">
+          <input type="image" class="option-btn" src="./images/rock.png" @click="setSelected(options.rock)">
+          <input type="image" class="option-btn" src="./images/paper.png" @click="setSelected(options.paper)">
+          <input type="image" class="option-btn" src="./images/scissors.png" @click="setSelected(options.scissors)">
         </div>
         <div class="game-control" v-if="gameRunning">
           <button class="btn btn-lg btn-success" @click="jankenpon" :disabled="!optSelected">JANKENPON!</button>
